@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="./src/stopbang.css">
+  <script src="./src/stopbang.js"></script> 
+  
+  <title>STOP BANG - Sleep Questionnaire</title>
+</head>
+<body>
+  <h1 class="sleepHeading">STOP BANG - Sleep Questionnaire</h1>
+  <div id="questionDiv" class="hidden"></div>
+  <div id="recommendationsDiv" class="hidden"></div>
+  <div id="otherResourcesDiv" class="hidden"></div>
+<div id="instructionsDiv">
+  <h3>STOP BANG Questionnaire Instructions</h3>
+  <p>Welcome to the STOP BANG Questionnaire, a tool designed to assess your risk of Obstructive Sleep Apnoea (OSA).</p>
+  
+  <h4>What You Will Need:</h4>
+  <ul>
+    <li><strong>Tape Measure</strong>: You will need a tape measure to measure your neck circumference.</li>
+    <li><strong>Scale and Ruler (or Height Measuring Instrument)</strong>: You will either need to know your current weight and height or have the means to measure them before proceeding with the questionnaire.</li>
+  </ul>
+
+  <h4>How to Proceed:</h4>
+  <ol>
+    <li>Read Each Question Carefully: Each question is designed to evaluate specific risk factors for Obstructive Sleep Apnoea.</li>
+    <li>Provide Accurate Information: The more accurate the information, the more accurate your assessment will be.</li>
+    <li>Measure Where Required: Use your tape measure, scale, and ruler for questions that require physical measurements.</li>
+  </ol>
+  
+  <p>Once you're ready and have all the required materials, click the "Start" button to begin the questionnaire.</p>
+</div>
+
+  <div id="startAndPrint">
+    <button id="startButton" onclick="startQuestionnaire()">Start</button>
+    <button id="printButton" onclick="printQuestionnaire()" class="hidden">Print</button>
+  </div>
+  <div id="progressBarContainer">
+    <div id="progressBar"></div>
+  </div>
+  <div id="creditsDiv" class="hidden">Questions by Dr Bruce Arroll 2023. Coded by Dr Jeremy Steinberg.</div>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+/* General body styling */
+.sleepHeading {
+  background-image: linear-gradient(to right, #0066b2, #7CB9E8);
+  color: white;
+  text-align: center;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+/* Main content divs */
+#questionDiv, #recommendationsDiv, #otherResourcesDiv, #instructionsDiv {
+  background-color: white;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  line-height: 1.5em;
+}
+  
+  #recommendationsDiv, #otherResourcesDiv {
+    line-height: 1.75em;
+  }
+  
+  #questionDiv {
+    line-height:2em;
+  }
+
+/* Radio buttons */
+input[type="radio"] {
+  margin-right: 0.5em;
+}
+
+/* Start/Restart button */
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 1em;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.hidden {
+  display: none;
+}
+
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5em;
+}
+
+/* Accordion */
+.accordion {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  cursor: pointer;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
+/* Accordion when hovered */
+.accordion:hover {
+  background-color: #0056b3;
+}
+
+.panel {
+  padding: 0 10px;
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.question-text {
+    min-height: 70px;
+}
+
+.question-text {
+  padding-bottom: 0.5em !important;
+}
+
+/* Progress bar container */
+#progressBarContainer {
+  background-color: #ccc;
+  margin: 1em;
+  display:none;
+}
+
+/* Progress bar */
+#progressBar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#creditsDiv {
+  background-color: #f9f9f9;
+  color: #777;
+  font-size: 0.9em;
+  padding: 1em;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  margin-top: 2em;
+}
+
+/* Hide default radio button */
+input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+}
+
+/* Style the label to look like a box */
+.boxed-radio, .boxed-input {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  flex: 1; /* Take up available space */
+  min-width: calc(50% - 10px); /* Minimum width, minus margin */
+  box-sizing: border-box; /* Include padding and border in element's total width */
+  user-select: none;
+}
+
+.boxed-radio {
+  cursor: pointer;
+}
+
+/* Change border color on hover */
+.boxed-radio:hover {
+  border-color: #198754;
+}
+
+/* Change background color on hover */
+.boxed-radio:active {
+  border-color: #198754;
+  background-color: #198754;
+  color:white;
+}
+
+
+/* Show a check mark when radio is selected */
+input[type="radio"]:checked + .boxed-radio::before {
+  content: "\2713";
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* Flex container */
+.flex-container {
+  display: flex;
+  flex-direction: column;  /* Stack children vertically */
+  align-items: stretch;  /* Stretch children horizontally to fill the container */
+}
+
+#startAndPrint {
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
+}
