@@ -15,7 +15,7 @@
       },
       {
         id: 'T2',
-        text: 'Do you wake up feeling like you haven’t slept?',
+        text: "Do you wake up feeling like you haven't slept?",
         options: ['No', 'Yes']
       },
       {
@@ -193,20 +193,22 @@ function handleUserInput(index, answer) {
 let recommendations = new Set();
 
 function generateRecommendations() {
-  // Calculate the score
-  let score = calculateScore();
+
+  // Clear recommendationsDiv
+   const recommendationsDiv = document.getElementById('recommendationsDiv');
+  recommendationsDiv.innerHTML = '';
+
+  // Calculate the score and BMI
+  const {score, BMI} = calculateScore();
 
   // Determine the risk level
   let riskLevel = determineRiskLevel(score);
 
   // Generate and store recommendations based on risk level
-  generateAndStoreRecommendations(riskLevel);
-
-  // Update DOM with score and risk level
-  updateDOMWithResults(score, riskLevel);
+  generateAndStoreRecommendations(score);
 
   // Display recommendations and other resources
-  displayRecommendations();
+  displayRecommendations(score, BMI, riskLevel);
   displayOtherResources();
 }
 
@@ -246,37 +248,36 @@ function determineRiskLevel(score) {
   }
 }
 
-function generateAndStoreRecommendations(riskLevel) {
+function generateAndStoreRecommendations(score) {
   recommendations.clear();
-  if (riskLevel === 'High risk of OSA') {
-    recommendations.add("Consult a sleep specialist.");
-  } else if (riskLevel === 'Intermediate risk of OSA') {
-    recommendations.add("Consider taking a sleep study.");
+  
+  let riskLevel;
+  
+  if (score >= 5) {
+    riskLevel = 'High risk of OSA';
+    recommendations.add("See your GP to discuss this.");
+  } else if (score >= 3) {
+    riskLevel = 'Intermediate risk of OSA';
+    recommendations.add("Consider seeing your GP to talk about your sleep.");
   } else {
+    riskLevel = 'Low risk of OSA';
     recommendations.add("Maintain a healthy lifestyle and sleep habits.");
   }
-}
-
-function updateDOMWithResults(score, riskLevel) {
-  const recommendationsDiv = document.getElementById('recommendationsDiv');
-  recommendationsDiv.innerHTML = `
-    <h2>Results</h2>
-    <p>Score: ${score}</p>
-    <p>${riskLevel}</p>
-  `;
+  
   recommendationsDiv.classList.remove('hidden');
+  return recommendations;
 }
 
 
-function displayScoreAndRisk() {
-  const {score, BMI} = calculateScore();
-  let riskLevel = determineRiskLevel(score);
+
+function displayScoreAndRisk(score, BMI, riskLevel) {
   const recommendationsDiv = document.getElementById('recommendationsDiv');
-  recommendationsDiv.innerHTML = `<h2>Recommendations</h2>`;
+  recommendationsDiv.innerHTML += `<h2>Recommendations</h2>`;
   recommendationsDiv.innerHTML += `<p>Score: ${score}</p>`;
   recommendationsDiv.innerHTML += `<p>Risk Level: ${riskLevel}</p>`;
-  
 }
+
+
 
 function displayListOfRecommendations() {
   const recommendationsDiv = document.getElementById('recommendationsDiv');
@@ -325,16 +326,13 @@ function addAccordionForAnswers() {
   });
 }
 
-function displayRecommendations() {
-
-  // Calculate the score and BMI
-  const {score, BMI} = calculateScore();
+function displayRecommendations(score, BMI, riskLevel) {
 
   // Clear the question display area
   document.getElementById('questionDiv').innerHTML = '';
-
+  
   // Display score and risk level
-  displayScoreAndRisk();
+  displayScoreAndRisk(score, BMI, riskLevel);
 
   // Check if there is more than one recommendation
   if (recommendations.size > 1) {
@@ -351,7 +349,6 @@ function displayRecommendations() {
 
   // Add accordion for questionnaire answers
   addAccordionForAnswers();
-  
 
   // Show or modify other UI elements
   document.getElementById('startButton').style.display = 'block';
